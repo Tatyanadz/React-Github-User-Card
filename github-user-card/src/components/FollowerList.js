@@ -1,15 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import Follower from './Follower'
+import Follower from './Follower';
 
 const FollowerList = props => {
-    return (
-        <>
-          {props.followers.map(follower => {
-              return <Follower key={follower.id} follower={follower} />
-          })}
-        </>
-    )
+
+  return (
+    <>
+      {props.followers.map(follower => {
+        return <Follower key={follower.id} follower={follower} />
+      })}
+    </>
+  )
 }
 
-export default FollowerList
+export default FollowerList;

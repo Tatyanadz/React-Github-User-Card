@@ -1,26 +1,27 @@
-import React, {Component} from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
 
-import User from './User'
+import User from './User';
 
-class Follower extends React {
-    constructor(props) {
-        super(props);
-        this.state = {
-            follower: this.porps.follower
-        }
+class Follower extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      follower: this.props.follower
     }
+  }
 
-    componentDidMount() {
-        axios.get(`https://api.github.com/users/${this.state.props.follower.login}`)
-          .then((response => {
-              this.setState({ follower: response.data})
-          }))
-    }
+  componentDidMount() {
+    axios.get(`https://api.github.com/users/${this.props.follower.login}`)
+      .then((response => {
+        this.setState({ follower: response.data })
+      }))
+  }
 
-    render() {
-        return <User userData={this.state.follower} />
-    }
+  render() {
+    console.log("this.state.follower in Follower.js: ", this.state.follower)
+    return <User userData={this.state.follower} />
+  }
 }
 
-export default Follower
+export default Follower;
